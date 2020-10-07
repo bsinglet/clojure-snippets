@@ -4,9 +4,6 @@
 ;;
 ;; Created by: Benjamin M. Singleton
 ;; Created: 10-03-2020
-(ns address.core
-  (:gen-class))
-
 (defn is-prime?
   "Determines if a number is prime or not. Defaults to true."
   [n]
@@ -79,8 +76,8 @@
   [n]
   (reduce + (get-unique-divisors n)))
 
-;;; This is a pretty inefficient test that generates every triangular number
-;;; <= n to see if n is triangular. Should be a much more easier way using the
+;; This is a pretty inefficient test that generates every triangular number
+;; <= n to see if n is triangular. Should be a much more easier way using the
 ;; quadratic formula to solve for n = (i * (i + 1)) / 2.
 (defn inefficient-is-triangular-number?
   "Tests if a number counts objects arranged in an equilateral triangle."
@@ -93,8 +90,8 @@
           true
           (recur (inc i)))))))
 
-;;; A more efficient test of a triangular number, checks if
-;;; (1/2) (sqrt(8*n+1) - 1) is a positive integer. Equivalently, (8*n+1) must
+;; A more efficient test of a triangular number, checks if
+;; (1/2) (sqrt(8*n+1) - 1) is a positive integer. Equivalently, (8*n+1) must
 ;; be a square number, and sqrt(8*n+1 must be odd.
 (defn is-triangular-number?
   "Tests if a number counts objects arranged in an equilateral triangle."
@@ -110,11 +107,11 @@
         false)
       false)))
 
-;;; P(s,n) = ((s-2)*n^2-(s-4)*n)/2
-;;; for a given s-polygonal number x, you can find n by:
-;;; n=(sqrt(8*(s-2)*x+(s-4)^2)+(s-4))/(2*(s-2))
-;;; and you can find s by:
-;;; s = 2+(2/n)*((x-n)/(n-1))
+;; P(s,n) = ((s-2)*n^2-(s-4)*n)/2
+;; for a given s-polygonal number x, you can find n by:
+;; n=(sqrt(8*(s-2)*x+(s-4)^2)+(s-4))/(2*(s-2))
+;; and you can find s by:
+;; s = 2+(2/n)*((x-n)/(n-1))
 (defn is-s-polygonal-number?
   "Tests if a number is a polygonal number with s sides. When true, returns n
   indicating that x is the nth s-polygonal number."
@@ -132,8 +129,8 @@
           false))
       false)))
 
-;;; This is, again, a very inefficient way of doing this, as it tests as many
-;;; integers as needed instead of just using the generating formula.
+;; This is, again, a very inefficient way of doing this, as it tests as many
+;; integers as needed instead of just using the generating formula.
 (defn get-first-n-s-polygonal-numbers
   "Returns the first n many s-polygonal numbers."
   [n s]

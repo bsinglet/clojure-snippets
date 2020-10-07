@@ -131,7 +131,7 @@
 
 ;; This is, again, a very inefficient way of doing this, as it tests as many
 ;; integers as needed instead of just using the generating formula.
-(defn get-first-n-s-polygonal-numbers
+(defn inefficient-get-first-n-s-polygonal-numbers
   "Returns the first n many s-polygonal numbers."
   [n s]
   (loop [i 1 all-numbers []]
@@ -141,6 +141,17 @@
       (if (is-s-polygonal-number? i s)
         (conj all-numbers i)
         all-numbers)))))
+
+;; Much more efficient way of generating s-polygonal numbers. Uses the formula
+;; (((s - 2)* n^2) - ((s - 4)* n)) / 2 instead of trial and error.
+(defn get-first-n-s-polygonal-numbers
+  "Returns the first n many s-polygonal numbers."
+  [n s]
+  (loop [i 1 all-numbers []]
+    (if (= (count all-numbers) n)
+      all-numbers
+        (recur (inc i)
+          (conj all-numbers (/ (- (* (- s 2) (* i i)) (* (- s 4) i)) 2))))))
 
 (defn is-evil-number?
   "Tests if a non-negative number has an even number of 1s in its binary form."
